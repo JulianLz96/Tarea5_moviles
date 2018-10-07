@@ -2,9 +2,18 @@
       xmlns:app="http://schemas.android.com/apk/res-auto"
       xmlns:tools="http://schemas.android.com/tools"
       tools:context="com.iteso.pdm18_scrollabletabs.ActivityMain">
+
     <item
-        android:id="@+id/action_settings"
+        android:id="@+id/actoin_log_out"
         android:orderInCategory="100"
+        android:title="LogOut"
+        app:showAsAction="never"
+        />
+
+    <item
+        android:id="@+id/action_privacy_policy"
+        android:orderInCategory="200"
         android:title="@string/action_settings"
-        app:showAsAction="never"/>
+        app:showAsAction="never"
+        />
 </menu>

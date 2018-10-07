@@ -1,6 +1,7 @@
 package com.iteso.pdm18_scrollabletabs;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.design.widget.TabLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -15,10 +16,6 @@ import android.view.MenuItem;
 
 import com.iteso.pdm18_scrollabletabs.tools.Constant;
 
-/**
- * @author Oscar Vargas
- * @since 02/03/18
- */
 public class ActivityMain extends AppCompatActivity {
 
     private static final int TOTAL_PAGES = 3;
@@ -62,8 +59,11 @@ public class ActivityMain extends AppCompatActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        if (id == R.id.actoin_log_out) {
+            deleteSharedPreferences();
+            Intent intent = new Intent(ActivityMain.this, ActivityLogin.class);
+            startActivity(intent);
+            finish();
         }
 
         return super.onOptionsItemSelected(item);
@@ -143,6 +143,12 @@ public class ActivityMain extends AppCompatActivity {
                 }
                 break;
         }
+    }
+
+    private void deleteSharedPreferences() {
+        SharedPreferences sharedPreferences = getSharedPreferences(
+                ActivitySplashScreen.MYPREFERENCES, MODE_PRIVATE);
+        sharedPreferences.edit().clear().apply();
     }
 }
 

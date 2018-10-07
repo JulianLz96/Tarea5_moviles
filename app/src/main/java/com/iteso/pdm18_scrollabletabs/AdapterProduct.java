@@ -19,11 +19,6 @@ import com.iteso.pdm18_scrollabletabs.tools.Constant;
 
 import java.util.ArrayList;
 
-/**
- * @author Oscar Vargas
- * @since 26/02/18.
- */
-
 public class AdapterProduct extends RecyclerView.Adapter<AdapterProduct.ViewHolder>{
 
     private ArrayList<ItemProduct> products;
