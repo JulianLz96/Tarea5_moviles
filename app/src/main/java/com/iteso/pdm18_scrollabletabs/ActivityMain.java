@@ -64,6 +64,10 @@ public class ActivityMain extends AppCompatActivity {
             Intent intent = new Intent(ActivityMain.this, ActivityLogin.class);
             startActivity(intent);
             finish();
+        } else if(id == R.id.action_privacy_policy) {
+            Intent intent = new Intent(ActivityMain.this, ActivityPrivacyPolicy.class);
+            startActivity(intent);
+            finish();
         }
 
         return super.onOptionsItemSelected(item);
