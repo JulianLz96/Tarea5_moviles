@@ -1,10 +1,12 @@
 package com.iteso.pdm18_scrollabletabs;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.webkit.JavascriptInterface;
 import android.webkit.WebResourceRequest;
 import android.webkit.WebSettings;
@@ -12,8 +14,10 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Toast;
 
-public class ActivityPrivacyPolicy extends AppCompatActivity {
-        /**Inner class*/
+public class ActivityPrivacyPolicy extends AppCompatActivity implements DialogInterface.OnKeyListener{
+
+    protected  WebView mWebView;
+    /**Inner class*/
      class WebAppInterface {
         Context mContext;
         WebAppInterface(Context c) {
@@ -40,7 +44,6 @@ public class ActivityPrivacyPolicy extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_privacy_policy);
-        WebView mWebView = null;
             mWebView = findViewById(R.id.activity_privacy_policy_webView);
 
         WebSettings webSettings = mWebView.getSettings();
@@ -48,5 +51,18 @@ public class ActivityPrivacyPolicy extends AppCompatActivity {
         mWebView.addJavascriptInterface(new WebAppInterface(this), "Android");
         mWebView.setWebViewClient(new MyWebViewCLient());
         mWebView.loadUrl("file:///android_asset/PrivacyPolicy.html");
+    }
+    @Override
+    public boolean onKey(DialogInterface dialogInterface, int i, KeyEvent keyEvent) {
+        return false;
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if((keyCode == KeyEvent.KEYCODE_BACK) && mWebView.canGoBack()) {
+            mWebView.goBack();
+            return true;
+        }
+        return super.onKeyDown(keyCode, event);
     }
 }
